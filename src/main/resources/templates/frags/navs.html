@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head></head>
+	<body>
+			<nav class="main-header navbar navbar-expand navbar-white navbar-light" th:fragment="main">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item dropdown">
+						<a class="nav-link" data-toggle="dropdown" href="">
+							<i class="far fa-user"></i>
+						</a>
+						<div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+							<span class="dropdown-item dropdown-header">Root</span>
+							<div class="dropdown-divider"></div>
+							<a th:href="@{/logout}" class="dropdown-item">
+								<i class="fas fa-power-off fa-sm mr-2"></i>Sair
+							</a>
+						</div>
+					</li>
+				</ul>
+			</nav>
+	</body>
+</html>
