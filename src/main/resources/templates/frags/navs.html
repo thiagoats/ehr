@@ -18,5 +18,16 @@
 					</li>
 				</ul>
 			</nav>
+			<nav class="main-header navbar navbar-expand-md navbar-light navbar-white" th:fragment="clean">
+				<div class="container">
+					<a th:href="@{/}" class="navbar-brand">
+                        <img th:src="@{/images/logo.png}" alt="EHR" class="brand-image">
+                        <span class="brand-text">EHR</span>
+                    </a>
+                    <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
+            </nav>
 	</body>
 </html>
