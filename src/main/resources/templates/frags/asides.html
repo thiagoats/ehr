@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head></head>
+	<body>
+			<aside class="main-sidebar sidebar-dark-primary elevation-4" th:fragment="main">
+				<a href="" class="brand-link">
+					<img th:src="@{/images/logo.png}" alt="EHR" class="brand-image">
+					<span class="brand-text">EHRs</span>
+				</a>
+				<div class="sidebar">
+					<nav class="mt-2">
+						<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+							<li class="nav-item">
+								<a th:href="@{/}" class="nav-link" th:classappend="${menu=='home'} ? 'active'">
+									<i class="nav-icon fa fa-home fa-sm"></i>
+									<p>Início</p>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</aside>
+	</body>
+</html>
