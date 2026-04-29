@@ -1,0 +1,1 @@
+INSERT INTO users (username, password, role) VALUES ("root@root.com", "$2a$10$EjqeWC7W.XyCAAa/mUMxFu0i.SgeX9nZThlGDx/M1WFXBSNmOfIpO", "ADM");
