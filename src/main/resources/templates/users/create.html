@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Usuários</title>
+		<link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+		<link rel="stylesheet" th:href="@{/vendors/fontawesome/css/all.min.css}">
+		<link rel="stylesheet" th:href="@{/vendors/adminlte/css/adminlte.min.css}">
+		<link rel="stylesheet" th:href="@{/css/styles.css}">
+	</head>
+	<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+		<div class="wrapper">
+			<div th:replace="~{frags/navs :: main}"></div>
+			<div th:replace="~{frags/asides :: main}"></div>
+			<div class="content-wrapper">
+				<div class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1 class="m-0">Usuários</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-right">
+									<li class="breadcrumb-item"><a th:href="@{/users}">Usuários</a></li>
+									<li class="breadcrumb-item active">Novo</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+				<section class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card">
+									<form method="post" th:action="@{/users/create}" th:object="${user}" autocomplete="off" class="form-horizontal">
+										<div class="card-header">
+											<h5 class="card-title m-0"><i class="fas fa-plus fa-sm mr-2"></i>Novo</h5>
+										</div>
+										<div class="card-body">
+											<div class="alert alert-danger alert-dismissible" th:if="${#fields.hasErrors('*')}">
+												<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+												<h6><i class="icon fas fa-exclamation-triangle"></i>Atenção!</h6>
+												<div th:each="error : ${#fields.errors('*')}" th:text="${error}" class="text-sm"></div>
+											</div>
+											<div class="form-group row">
+												<label for="username" class="col-sm-1 col-form-label">E-mail</label>
+												<div class="col-sm-5">
+													<div class="input-group mb-3">
+														<input type="email" class="form-control input" th:field="*{username}" th:classappend="${#fields.hasErrors('username')} ? is-invalid">
+														<div class="input-group-append">
+															<span class="input-group-text input"><i class="fas fa-envelope"></i></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="password" class="col-sm-1 col-form-label">Senha</label>
+												<div class="col-sm-5">
+													<div class="input-group mb-3">
+														<input type="password" class="form-control input" th:field="*{password}" th:classappend="${#fields.hasErrors('password')} ? is-invalid">
+														<div class="input-group-append">
+															<span class="input-group-text input"><i class="fas fa-key"></i></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<label for="role" class="col-sm-1 col-form-label">Perfil</label>
+												<div class="col-sm-5">
+													<div class="input-group mb-3">
+														<select class="form-control select" th:field="*{role}" th:classappend="${#fields.hasErrors('role')} ? is-invalid">
+															<option th:value="NULL">Selecione</option>
+															<option th:each="role : ${roles}" th:value="${role.getAuthority()}" th:text="${role.getDescription()}"></option>
+														</select>
+														<div class="input-group-append">
+															<span class="input-group-text input"><i class="fas fa-shield-alt"></i></span>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="form-group row">
+												<div class="offset-sm-1 col-sm-10">
+													<div class="form-check">
+														<input type="checkbox" class="form-check-input" th:field="*{enabled}">
+														<label class="form-check-label" for="enabled">Ativo</label>
+													</div>
+												</div>
+											</div>
+										</div>
+										<div class="card-footer">
+											<button type="submit" class="btn btn-primary"><i class="fas fa-save fa-sm mr-2"></i>Salvar</button>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div th:replace="~{frags/footers :: main}"></div>
+		</div>
+		<script th:src="@{/vendors/jquery/jquery.min.js}"></script>
+		<script th:src="@{/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/vendors/adminlte/js/adminlte.min.js}"></script>
+	</body>
+</html>
