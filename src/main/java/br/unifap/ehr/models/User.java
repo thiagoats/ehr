@@ -55,6 +55,7 @@ public class User implements Serializable {
 	/**
 	 * User password
 	**/
+	@NotBlank(message = "Senha é obrigatória")
 	@Column(columnDefinition = "char(60)", nullable = false)
 	private String password;
 	
