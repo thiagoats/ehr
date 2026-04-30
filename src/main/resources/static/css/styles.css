@@ -1,3 +1,9 @@
 .input {
     border-radius: 0px;
 }
+.select {
+    border-radius: 0px;
+    appearance: none;
+    text-indent: 1px;
+    text-overflow: "";
+}
