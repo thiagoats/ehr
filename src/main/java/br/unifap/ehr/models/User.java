@@ -1,8 +1,12 @@
 package br.unifap.ehr.models;
 
 import java.io.Serializable;
+import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.validator.constraints.Length;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -72,4 +76,13 @@ public class User implements Serializable {
 	**/
 	@Column(columnDefinition = "tinyint(1) default 1", nullable = false)
 	private Boolean enabled;
+	
+	/**
+	 * Return the user authorities
+	 * @author Thiago Pinheiro do Nascimento
+	 * @since 0.1
+	**/
+	public Collection<? extends GrantedAuthority> getAuthorities() {
+		return List.of(new SimpleGrantedAuthority(role.getAuthority()));
+	}
 }
