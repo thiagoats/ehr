@@ -49,7 +49,7 @@ public class User implements Serializable {
 	@NotBlank(message = "E-mail é obrigatório")
 	@Length(min = 10, max = 60, message = "E-mail deve conter entre 10 e 60 caracteres")
 	@Email(message = "E-mail inválido")
-	@Column(length = 60, nullable = false)
+	@Column(length = 60, nullable = false, unique = true)
 	private String username;
 	
 	/**
