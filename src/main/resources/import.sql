@@ -1,1 +1,1 @@
-INSERT INTO users (username, password, role) VALUES ("root@root.com", "$2a$10$EjqeWC7W.XyCAAa/mUMxFu0i.SgeX9nZThlGDx/M1WFXBSNmOfIpO", "ADM");
+INSERT INTO users (username, password, role, created_at, created_by, updated_at, updated_by) VALUES ("root@root.com", "$2a$10$EjqeWC7W.XyCAAa/mUMxFu0i.SgeX9nZThlGDx/M1WFXBSNmOfIpO", "ADM", utc_timestamp, "root@root.com", utc_timestamp, "root@root.com");
