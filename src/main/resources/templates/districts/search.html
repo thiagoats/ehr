@@ -49,7 +49,10 @@
 											<tbody>
 												<tr th:each="district : ${districts}">
 													<td th:text="${district.getName()}"></td>
-													<td><a th:href="@{/districts/update(id=${district.getId()})}" title="Alterar"><i class="fas fa-pen fa-sm mr-2 text-primary"></i></a></td>
+													<td>
+														<a th:href="@{/districts/update(id=${district.getId()})}" title="Alterar"><i class="fas fa-pen fa-sm mr-3 text-primary"></i></a>
+														<a href="" title="Excluir" data-toggle="modal" data-target="#delete" data-whateverasking="Confirma a exclusão do bairro " th:data-whateveritem="${district.getName()}" th:data-whateveraction="@{/districts/delete(id=${district.getId()})}"><i class="fas fa-trash fa-sm mr-3 text-danger"></i></a>
+													</td>
 												</tr>
 											</tbody>
 											<tfoot>
@@ -59,6 +62,25 @@
 												</tr>
 											</tfoot>
 										</table>
+										<div class="modal fade" id="delete" th:fragment="delete">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Exclusão</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <span class="asking"></span> <b class="item alert-link"></b>?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        
+                                                        <a href="" class="btn btn-danger" id="confirm"><i class="fas fa-check fa-sm mr-2"></i>Sim</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
 									</div>
 									<div class="card-footer">
 										<a th:href="@{districts/create}" class="btn btn-info"><i class="fas fa-plus fa-sm mr-2"></i>Novo</a>
@@ -79,5 +101,6 @@
 		<script th:src="@{/vendors/datatables/js/bootstrap.responsive.min.js}"></script>
 		<script th:src="@{/vendors/adminlte/js/adminlte.min.js}"></script>
 		<script th:src="@{/js/grid.js}"></script>
+		<script th:src="@{/js/delete.js}"></script>
 	</body>
 </html>
