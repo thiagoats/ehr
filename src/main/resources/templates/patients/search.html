@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pacientes</title>
+		<link rel="icon" type="image/x-icon" th:href="@{/images/favicon.ico}">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+		<link rel="stylesheet" th:href="@{/vendors/fontawesome/css/all.min.css}">
+		<link rel="stylesheet" th:href="@{/vendors/datatables/css/datatables.bootstrap.min.css}">
+		<link rel="stylesheet" th:href="@{/vendors/datatables/css/datatables.responsive.min.css}">
+		<link rel="stylesheet" th:href="@{/vendors/adminlte/css/adminlte.min.css}">
+	</head>
+	<body class="hold-transition sidebar-mini layout-fixed layout-navbar-fixed layout-footer-fixed">
+		<div class="wrapper">
+			<div th:replace="~{frags/navs :: main}"></div>
+			<div th:replace="~{frags/asides :: main}"></div>
+			<div class="content-wrapper">
+				<div class="content-header">
+					<div class="container-fluid">
+						<div class="row mb-2">
+							<div class="col-sm-6">
+								<h1 class="m-0">Pacientes</h1>
+							</div>
+							<div class="col-sm-6">
+								<ol class="breadcrumb float-sm-right">
+									<li class="breadcrumb-item active">Pacientes</li>
+								</ol>
+							</div>
+						</div>
+					</div>
+				</div>
+				<section class="content">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-12">
+								<div class="card">
+									<div class="card-header">
+										<h5 class="card-title m-0"><i class="fas fa-search fa-sm mr-2"></i>Pesquisa</h5>
+									</div>
+									<div class="card-body">
+										<table class="table table-bordered table-striped grid">
+											<thead>
+												<tr>
+													<th>CPF</th>
+													<th>Nome</th>
+													<th>Ação</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="patient : ${patients}">
+													<td th:text="${patient.getCpf()}"></td>
+													<td th:text="${patient.getName()}"></td>
+													<td>
+														<a th:href="@{/patients/update(id=${patient.getId()})}" title="Alterar"><i class="fas fa-pen fa-sm mr-3 text-primary"></i></a>
+														<a href="" title="Excluir" data-toggle="modal" data-target="#delete" data-whateverasking="Confirma a exclusão do paciente " th:data-whateveritem="${patient.getName()}" th:data-whateveraction="@{/patients/delete(id=${patient.getId()})}"><i class="fas fa-trash fa-sm mr-3 text-danger"></i></a>
+													</td>
+												</tr>
+											</tbody>
+											<tfoot>
+												<tr>
+													<th>CPF</th>
+													<th>Nome</th>
+													<th>Ação</th>
+												</tr>
+											</tfoot>
+										</table>
+										<div class="modal fade" id="delete" th:fragment="delete">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title">Exclusão</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <span class="asking"></span> <b class="item alert-link"></b>?
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        
+                                                        <a href="" class="btn btn-danger" id="confirm"><i class="fas fa-check fa-sm mr-2"></i>Sim</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+									</div>
+									<div class="card-footer">
+										<a th:href="@{patients/create}" class="btn btn-info"><i class="fas fa-plus fa-sm mr-2"></i>Novo</a>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+			</div>
+			<div th:replace="~{frags/footers :: main}"></div>
+		</div>
+		<script th:src="@{/vendors/jquery/jquery.min.js}"></script>
+		<script th:src="@{/vendors/bootstrap/js/bootstrap.bundle.min.js}"></script>
+		<script th:src="@{/vendors/datatables/js/datatables.jquery.min.js}"></script>
+		<script th:src="@{/vendors/datatables/js/datatables.bootstrap.min.js}"></script>
+		<script th:src="@{/vendors/datatables/js/datatables.responsive.min.js}"></script>
+		<script th:src="@{/vendors/datatables/js/bootstrap.responsive.min.js}"></script>
+		<script th:src="@{/vendors/adminlte/js/adminlte.min.js}"></script>
+		<script th:src="@{/js/grid.js}"></script>
+		<script th:src="@{/js/delete.js}"></script>
+	</body>
+</html>
