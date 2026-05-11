@@ -11,16 +11,20 @@ import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 import jakarta.persistence.PostLoad;
 import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
+import jakarta.persistence.PrimaryKeyJoinColumn;
 import jakarta.persistence.Table;
+import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
@@ -40,15 +44,15 @@ public class Patient implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Pattern(regexp = "\\d{15}", message = "Cartão SUS deve conter 15 dígitos")
+	@Pattern(regexp = "^$|^\\d{15}$", message = "Cartão do SUS deve conter 15 dígitos")
 	@Column(columnDefinition = "char(15)")
 	private String susId;
 	
-	@CPF(message = "CPF inválido")
+	@CPF(message = "CPF é inválido")
 	@Column(columnDefinition = "char(11)", nullable = false)
 	private String cpf;
 	
-	@NotBlank(message = "Nome é obrigatório")
+	@NotBlank(message = "Nome completo é obrigatório")
 	@Length(min = 3, max = 75, message = "Nome deve conter entre 3 e 75 caracteres")
 	@Column(length = 75, nullable = false)
 	private String name;
@@ -77,6 +81,11 @@ public class Patient implements Serializable {
 	@LastModifiedBy
 	@Column(length = 60, nullable = false)
 	private String updatedBy;
+	
+	@Valid
+	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Contact contact;
 	
 	@PrePersist @PreUpdate
 	private void prePersistPreUpdate() {
