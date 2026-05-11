@@ -23,6 +23,12 @@
 									<p>Bairros</p>
 								</a>
 							</li>
+							<li class="nav-item">
+								<a th:href="@{/patients}" class="nav-link" th:classappend="${menu=='patients'} ? 'active'">
+									<i class="nav-icon fa fa-users fa-sm"></i>
+									<p>Pacientes</p>
+								</a>
+							</li>
 							<li class="nav-header">SISTEMA</li>
 							<li class="nav-item">
 								<a th:href="@{/users}" class="nav-link" th:classappend="${menu=='users'} ? 'active'">
