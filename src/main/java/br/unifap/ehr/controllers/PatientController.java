@@ -45,6 +45,7 @@ public class PatientController {
 	public ModelAndView create(@Valid Patient patient, BindingResult result) {
 		if(result.hasErrors())
 			return create(patient);
+		patient.getContact().setPatient(patient);
 		patientService.persist(patient);
 		return new ModelAndView("redirect:/patients");
 	}
@@ -63,6 +64,7 @@ public class PatientController {
 	public ModelAndView update(@Valid Patient patient, BindingResult result) {
 		if(result.hasErrors())
 			return update(patient.getId(), patient, true);
+		patient.getContact().setId(patient.getId());
 		patientService.persist(patient);
 		return new ModelAndView("redirect:/patients");
 	}
