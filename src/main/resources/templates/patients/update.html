@@ -47,7 +47,7 @@
 											</div>
 											<input type="hidden" th:field="*{id}">
 											<div class="row">
-												<div class="col-md-3">
+												<div class="col-md-2">
 													<div class="form-group">
 														<label for="name">CPF</label>
 														<div class="input-group mb-3">
@@ -58,24 +58,35 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-5">
+												<div class="col-md-4">
 													<div class="form-group">
 														<label for="name">Nome completo</label>
 														<div class="input-group mb-3">
 															<input type="text" class="form-control input" th:field="*{name}" th:classappend="${#fields.hasErrors('name')} ? is-invalid">
 															<div class="input-group-append">
-																<span class="input-group-text"><i class="fa fa-users"></i></span>
+																<span class="input-group-text"><i class="fa fa-user"></i></span>
 															</div>
 														</div>
 													</div>
 												</div>
-												<div class="col-md-4">
+												<div class="col-md-3">
 													<div class="form-group">
 														<label for="name">Nome social</label>
 														<div class="input-group mb-3">
 															<input type="text" class="form-control input" th:field="*{socialName}" th:classappend="${#fields.hasErrors('socialName')} ? is-invalid">
 															<div class="input-group-append">
 																<span class="input-group-text"><i class="fa fa-signature"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Cartão do SUS</label>
+														<div class="input-group mb-3">
+															<input type="text" class="form-control input" th:field="*{susId}" th:classappend="${#fields.hasErrors('susId')} ? is-invalid">
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-id-card"></i></span>
 															</div>
 														</div>
 													</div>
@@ -89,6 +100,28 @@
 															<input type="text" class="form-control input" th:field="*{motherName}" th:classappend="${#fields.hasErrors('motherName')} ? is-invalid">
 															<div class="input-group-append">
 																<span class="input-group-text"><i class="fa fa-female"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Celular</label>
+														<div class="input-group mb-3">
+															<input type="text" class="form-control input cellphone" th:field="*{contact.cellphone}" th:classappend="${#fields.hasErrors('contact.cellphone')} ? is-invalid">
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-mobile"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-4">
+													<div class="form-group">
+														<label for="name">E-mail</label>
+														<div class="input-group mb-3">
+															<input type="email" class="form-control input" th:field="*{contact.email}" th:classappend="${#fields.hasErrors('contact.email')} ? is-invalid">
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-envelope"></i></span>
 															</div>
 														</div>
 													</div>
