@@ -1,0 +1,76 @@
+package br.unifap.ehr.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
+
+import br.unifap.ehr.models.Patient;
+import br.unifap.ehr.repositories.PatientRepository;
+import br.unifap.ehr.services.PatientService;
+import jakarta.validation.Valid;
+
+@Controller
+@RequestMapping("/patients")
+public class PatientController {
+
+	private static final String MENU = "patients";
+	
+	@Autowired
+	private PatientRepository patientRepository;
+	
+	@Autowired
+	private PatientService patientService;
+	
+	@GetMapping
+	public ModelAndView search() {
+		ModelAndView mv = new ModelAndView("patients/search");
+		mv.addObject("menu", MENU);
+		mv.addObject("patients", patientRepository.findAll());
+		return mv;
+	}
+	
+	@GetMapping("/create")
+	public ModelAndView create(Patient patient) {
+		ModelAndView mv = new ModelAndView("patients/create");
+		mv.addObject("menu", MENU);
+		return mv;
+	}
+	
+	@PostMapping("/create")
+	public ModelAndView create(@Valid Patient patient, BindingResult result) {
+		if(result.hasErrors())
+			return create(patient);
+		patientService.persist(patient);
+		return new ModelAndView("redirect:/patients");
+	}
+	
+	@GetMapping("/update")
+	public ModelAndView update(@RequestParam("id") Long id, Patient patient, boolean isInvalid) {
+		ModelAndView mv = new ModelAndView("patients/update");
+		if(!isInvalid)
+			patient = patientService.findOrFail(id);
+		mv.addObject("menu", MENU);
+		mv.addObject("patient", patient);
+		return mv;
+	}
+	
+	@PostMapping("/update")
+	public ModelAndView update(@Valid Patient patient, BindingResult result) {
+		if(result.hasErrors())
+			return update(patient.getId(), patient, true);
+		patientService.persist(patient);
+		return new ModelAndView("redirect:/patients");
+	}
+	
+	@GetMapping("/delete")
+	public ModelAndView delete(@RequestParam("id") Long id) {
+		Patient patient = patientService.findOrFail(id);
+		patientService.remove(patient);
+		return new ModelAndView("redirect:/patients");
+	}
+}
