@@ -2,20 +2,19 @@ package br.unifap.ehr.models;
 
 import lombok.Getter;
 
-@Getter
 public enum Gender {
 	
-	FEM("FEM", "Feminino"),
-	MAS("MAS", "Masculino"),
-	NBN("NBN", "Não binário"),
-	TGN("TGN", "Transgênero");
+	CIS_MALE("Homem cisgênero"),
+	TRANS_MALE("Homem transgênero"),
+	CIS_FEMALE("Mulher cisgênero"),
+	TRANS_FEMALE("Mulher transgênero"),
+	NONBINARY("Não-binário"),
+	OTHER("Outro");
 	
-	private String name;
-	
+	@Getter
 	private String description;
 	
-	private Gender(String name, String description) {
-		this.name = name;
+	private Gender(String description) {
 		this.description = description;
 	}
 }
