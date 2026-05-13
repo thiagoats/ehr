@@ -2,21 +2,19 @@ package br.unifap.ehr.models;
 
 import lombok.Getter;
 
-@Getter
 public enum Orientation {
 	
-	ASSEXU("ASSEXU", "Assexual"),
-	BISEXU("BISEXU", "Bissexual"),
-	HETERO("HETERO", "Heterossexual"),
-	HOMOSX("HOMOSX", "Homossexual"),
-	PANSEX("PANSEX", "Pansexual");
-	
-	private String name;
-	
+	HETEROSEXUAL("Heterossexual"),
+	HOMOSEXUAL("Homossexual"),
+	BISEXUAL("Bissexual"),
+	PANSEXUAL("Pansexual"),
+	ASEXUAL("Assexual"),
+	OTHER("Outra");
+
+	@Getter
 	private String description;
 	
-	private Orientation(String name, String description) {
-		this.name = name;
+	private Orientation(String description) {
 		this.description = description;
 	}
 }
