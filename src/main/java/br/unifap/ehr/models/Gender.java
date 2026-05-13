@@ -6,7 +6,9 @@ import lombok.Getter;
 public enum Gender {
 	
 	FEM("FEM", "Feminino"),
-	MAS("MAS", "Masculino");
+	MAS("MAS", "Masculino"),
+	NBN("NBN", "Não binário"),
+	TGN("TGN", "Transgênero");
 	
 	private String name;
 	
