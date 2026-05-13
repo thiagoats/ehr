@@ -4,12 +4,9 @@ import lombok.Getter;
 
 public enum Gender {
 	
-	CIS_MALE("Homem cisgênero"),
-	TRANS_MALE("Homem transgênero"),
-	CIS_FEMALE("Mulher cisgênero"),
-	TRANS_FEMALE("Mulher transgênero"),
-	NONBINARY("Não-binário"),
-	OTHER("Outro");
+	MALE("Masculino"),
+	FEMALE("Feminino"),
+	NONBINARY("Não binário");
 	
 	@Getter
 	private String description;
