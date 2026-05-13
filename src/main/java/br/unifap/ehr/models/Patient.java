@@ -87,6 +87,11 @@ public class Patient implements Serializable {
 	@PrimaryKeyJoinColumn
 	private Contact contact;
 	
+	@Valid
+	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+	@PrimaryKeyJoinColumn
+	private Demographic demographic;
+	
 	@PrePersist @PreUpdate
 	private void prePersistPreUpdate() {
 		this.cpf = this.cpf.replaceAll("\\.|-", "");
