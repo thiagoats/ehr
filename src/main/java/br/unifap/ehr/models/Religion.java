@@ -2,25 +2,26 @@ package br.unifap.ehr.models;
 
 import lombok.Getter;
 
-@Getter
 public enum Religion {
 	
-	BUDI("BUDI", "Budísmo"),
-	CAND("CAND", "Candomblé"),
-	CATO("CATO", "Católico"),
-	ESPI("ESPI", "Espírita"),
-	EVAN("EVAN", "Evangélico"),
-	HIND("HIND", "Hinduísmo"),
-	ISLA("ISLA", "Islamísmo"),
-	JUDA("JUDA", "Judaísmo"),
-	UMBA("UMBA", "Umbanda");
+    CATHOLICISM("Catolicismo"),
+    PROTESTANTISM("Protestantismo"),
+    SPIRITISM("Espiritismo"),
+    ISLAM("Islamismo"),
+    JUDAISM("Judaísmo"),
+    BUDDHISM("Budismo"),
+    HINDUISM("Hinduísmo"),
+    CANDOMBLE("Candomblé"),
+    UMBANDA("Umbanda"),
+    AGNOSTICISM("Agnosticismo"),
+    ATHEISM("Ateísmo"),
+    NONE("Sem religião"),
+    OTHER("Outra");
 	
-	private String name;
-	
+	@Getter
 	private String description;
 	
-	private Religion(String name, String description) {
-		this.name = name;
+	private Religion(String description) {
 		this.description = description;
 	}
 }
