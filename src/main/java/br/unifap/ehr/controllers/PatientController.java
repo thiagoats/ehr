@@ -9,7 +9,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import br.unifap.ehr.models.Disability;
+import br.unifap.ehr.models.Ethnicity;
+import br.unifap.ehr.models.Gender;
+import br.unifap.ehr.models.Marital;
+import br.unifap.ehr.models.Modality;
+import br.unifap.ehr.models.Orientation;
 import br.unifap.ehr.models.Patient;
+import br.unifap.ehr.models.Religion;
 import br.unifap.ehr.repositories.PatientRepository;
 import br.unifap.ehr.services.PatientService;
 import jakarta.validation.Valid;
@@ -38,6 +45,13 @@ public class PatientController {
 	public ModelAndView create(Patient patient) {
 		ModelAndView mv = new ModelAndView("patients/create");
 		mv.addObject("menu", MENU);
+		mv.addObject("genders", Gender.values());
+		mv.addObject("modalities", Modality.values());
+		mv.addObject("orientations", Orientation.values());
+		mv.addObject("maritalStatus", Marital.values());
+		mv.addObject("religions", Religion.values());
+		mv.addObject("disabilities", Disability.values());
+		mv.addObject("ethnicities", Ethnicity.values());
 		return mv;
 	}
 	
@@ -46,6 +60,7 @@ public class PatientController {
 		if(result.hasErrors())
 			return create(patient);
 		patient.getContact().setPatient(patient);
+		patient.getDemographic().setPatient(patient);
 		patientService.persist(patient);
 		return new ModelAndView("redirect:/patients");
 	}
@@ -57,6 +72,13 @@ public class PatientController {
 			patient = patientService.findOrFail(id);
 		mv.addObject("menu", MENU);
 		mv.addObject("patient", patient);
+		mv.addObject("genders", Gender.values());
+		mv.addObject("modalities", Modality.values());
+		mv.addObject("orientations", Orientation.values());
+		mv.addObject("maritalStatus", Marital.values());
+		mv.addObject("religions", Religion.values());
+		mv.addObject("disabilities", Disability.values());
+		mv.addObject("ethnicities", Ethnicity.values());
 		return mv;
 	}
 	
@@ -65,6 +87,7 @@ public class PatientController {
 		if(result.hasErrors())
 			return update(patient.getId(), patient, true);
 		patient.getContact().setId(patient.getId());
+		patient.getDemographic().setId(patient.getId());
 		patientService.persist(patient);
 		return new ModelAndView("redirect:/patients");
 	}
