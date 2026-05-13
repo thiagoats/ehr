@@ -47,7 +47,7 @@
 											</div>
 											<input type="hidden" th:field="*{id}">
 											<div class="row">
-												<div class="col-md-2">
+												<div class="col-md-3">
 													<div class="form-group">
 														<label for="name">CPF</label>
 														<div class="input-group mb-3">
@@ -58,7 +58,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-4">
+												<div class="col-md-5">
 													<div class="form-group">
 														<label for="name">Nome completo</label>
 														<div class="input-group mb-3">
@@ -69,7 +69,7 @@
 														</div>
 													</div>
 												</div>
-												<div class="col-md-3">
+												<div class="col-md-4">
 													<div class="form-group">
 														<label for="name">Nome social</label>
 														<div class="input-group mb-3">
@@ -80,6 +80,8 @@
 														</div>
 													</div>
 												</div>
+											</div>
+											<div class="row">
 												<div class="col-md-3">
 													<div class="form-group">
 														<label for="name">Cartão do SUS</label>
@@ -91,9 +93,106 @@
 														</div>
 													</div>
 												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Data de nascimento</label>
+														<div class="input-group mb-3">
+															<input type="text" class="form-control input date" th:field="*{demographic.birth}" th:classappend="${#fields.hasErrors('demographic.birth')} ? is-invalid">
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-calendar"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Identidade de gênero</label>
+														<div class="input-group mb-3">
+															<select class="form-control input select" th:field="*{demographic.gender}" th:classappend="${#fields.hasErrors('demographic.gender')} ? is-invalid">
+																<option th:value="NULL">Selecione</option>
+																<option th:each="gender : ${genders}" th:value="${gender}" th:text="${gender.getDescription()}"></option>
+															</select>
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-venus-mars"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Concordância de gênero</label>
+														<div class="input-group mb-3">
+															<select class="form-control input select" th:field="*{demographic.modality}" th:classappend="${#fields.hasErrors('demographic.modality')} ? is-invalid">
+																<option th:value="NULL">Selecione</option>
+																<option th:each="modality : ${modalities}" th:value="${modality}" th:text="${modality.getDescription()}"></option>
+															</select>
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-exchange-alt"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
 											</div>
 											<div class="row">
-												<div class="col-md-4">
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Orientação sexual</label>
+														<div class="input-group mb-3">
+															<select class="form-control input select" th:field="*{demographic.orientation}" th:classappend="${#fields.hasErrors('demographic.orientation')} ? is-invalid">
+																<option th:value="NULL">Selecione</option>
+																<option th:each="orientation : ${orientations}" th:value="${orientation}" th:text="${orientation.getDescription()}"></option>
+															</select>
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-heart"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Estado civíl</label>
+														<div class="input-group mb-3">
+															<select class="form-control input select" th:field="*{demographic.marital}" th:classappend="${#fields.hasErrors('demographic.marital')} ? is-invalid">
+																<option th:value="NULL">Selecione</option>
+																<option th:each="marital : ${maritalStatus}" th:value="${marital}" th:text="${marital.getDescription()}"></option>
+															</select>
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-ring"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Religião</label>
+														<div class="input-group mb-3">
+															<select class="form-control input select" th:field="*{demographic.religion}" th:classappend="${#fields.hasErrors('demographic.religion')} ? is-invalid">
+																<option th:value="NULL">Selecione</option>
+																<option th:each="religion : ${religions}" th:value="${religion}" th:text="${religion.getDescription()}"></option>
+															</select>
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fa fa-pray"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+												<div class="col-md-3">
+													<div class="form-group">
+														<label for="name">Etnia</label>
+														<div class="input-group mb-3">
+															<select class="form-control input select" th:field="*{demographic.ethnicity}" th:classappend="${#fields.hasErrors('demographic.ethnicity')} ? is-invalid">
+																<option th:value="NULL">Selecione</option>
+																<option th:each="ethnicity : ${ethnicities}" th:value="${ethnicity}" th:text="${ethnicity.getDescription()}"></option>
+															</select>
+															<div class="input-group-append">
+																<span class="input-group-text"><i class="fas fa-globe-americas"></i></span>
+															</div>
+														</div>
+													</div>
+												</div>
+											</div>
+											<div class="row">
+												<div class="col-md-5">
 													<div class="form-group">
 														<label for="name">Nome da mãe</label>
 														<div class="input-group mb-3">
