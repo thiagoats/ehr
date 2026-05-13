@@ -4,19 +4,17 @@ import lombok.Getter;
 
 public enum Religion {
 	
-    CATHOLICISM("Catolicismo"),
-    PROTESTANTISM("Protestantismo"),
-    SPIRITISM("Espiritismo"),
-    ISLAM("Islamismo"),
-    JUDAISM("Judaísmo"),
-    BUDDHISM("Budismo"),
-    HINDUISM("Hinduísmo"),
-    CANDOMBLE("Candomblé"),
+	CATHOLICISM("Católico"),
+    PROTESTANTISM("Evangélico"),
+    SPIRITISM("Espírita"),
     UMBANDA("Umbanda"),
-    AGNOSTICISM("Agnosticismo"),
-    ATHEISM("Ateísmo"),
+    CANDOMBLE("Candomblé"),
+    JUDAISM("Judaísmo"),
+    HINDUISM("Hinduísmo"),
+    BUDDHISM("Budismo"),
+    ISLAM("Islamismo"),
     NONE("Sem religião"),
-    OTHER("Outra");
+    UNDECLARED("Não declarado");
 	
 	@Getter
 	private String description;
