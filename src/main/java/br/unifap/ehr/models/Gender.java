@@ -6,7 +6,8 @@ public enum Gender {
 	
 	MALE("Masculino"),
 	FEMALE("Feminino"),
-	NONBINARY("Não binário");
+	NONBINARY("Não binário"),
+	UNDECLARED("Não declarado");
 	
 	@Getter
 	private String description;
