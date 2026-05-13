@@ -2,21 +2,19 @@ package br.unifap.ehr.models;
 
 import lombok.Getter;
 
-@Getter
 public enum Marital {
 	
-	CAS("CAS", "Casado"),
-	DIV("DIV", "Divorciado"),
-	EST("EST", "União estável"),
-	SOL("SOL", "Solteiro"),
-	VIU("VIU", "Viúvo");
+	SINGLE("Solteiro"),
+	MARRIED("Casado"),
+	DIVORCED("Divorciado"),
+	WIDOMED("Viúvo"),
+	SEPARATED("Separado"),
+	STABLE_UNION("União estável");
 	
-	private String name;
-	
+	@Getter
 	private String description;
 	
-	private Marital(String name, String description) {
-		this.name = name;
+	private Marital(String description) {
 		this.description = description;
 	}
 }
