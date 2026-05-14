@@ -17,6 +17,7 @@ import br.unifap.ehr.models.Modality;
 import br.unifap.ehr.models.Orientation;
 import br.unifap.ehr.models.Patient;
 import br.unifap.ehr.models.Religion;
+import br.unifap.ehr.repositories.DistrictRepository;
 import br.unifap.ehr.repositories.PatientRepository;
 import br.unifap.ehr.services.PatientService;
 import jakarta.validation.Valid;
@@ -29,6 +30,9 @@ public class PatientController {
 	
 	@Autowired
 	private PatientRepository patientRepository;
+	
+	@Autowired
+	private DistrictRepository districtRepository;
 	
 	@Autowired
 	private PatientService patientService;
@@ -52,6 +56,7 @@ public class PatientController {
 		mv.addObject("religions", Religion.values());
 		mv.addObject("disabilities", Disability.values());
 		mv.addObject("ethnicities", Ethnicity.values());
+		mv.addObject("districts", districtRepository.findAll());
 		return mv;
 	}
 	
@@ -80,6 +85,7 @@ public class PatientController {
 		mv.addObject("religions", Religion.values());
 		mv.addObject("disabilities", Disability.values());
 		mv.addObject("ethnicities", Ethnicity.values());
+		mv.addObject("districts", districtRepository.findAll());
 		return mv;
 	}
 	
