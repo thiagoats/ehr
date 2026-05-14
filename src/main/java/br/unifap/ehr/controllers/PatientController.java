@@ -61,6 +61,7 @@ public class PatientController {
 			return create(patient);
 		patient.getContact().setPatient(patient);
 		patient.getDemographic().setPatient(patient);
+		patient.getDemographic().getAddress().setDemographic(patient.getDemographic());
 		patientService.persist(patient);
 		return new ModelAndView("redirect:/patients");
 	}
@@ -88,6 +89,7 @@ public class PatientController {
 			return update(patient.getId(), patient, true);
 		patient.getContact().setId(patient.getId());
 		patient.getDemographic().setId(patient.getId());
+		patient.getDemographic().getAddress().setId(patient.getId());
 		patientService.persist(patient);
 		return new ModelAndView("redirect:/patients");
 	}
