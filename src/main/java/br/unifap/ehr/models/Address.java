@@ -36,7 +36,7 @@ public class Address {
 	
 	@NotNull(message = "Bairro é obrigatório")
 	@ManyToOne
-	@JoinColumn(name = "associates_id", nullable = false)
+	@JoinColumn(name = "districts_id", nullable = false)
 	private District district;
 	
 	@OneToOne
