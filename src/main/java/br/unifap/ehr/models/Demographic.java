@@ -9,6 +9,7 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.MapsId;
@@ -62,7 +63,7 @@ public class Demographic {
 	private Patient patient;
 	
 	@Valid
-	@OneToOne(mappedBy = "demographic", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "demographic", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	@PrimaryKeyJoinColumn
 	private Address address;
 }

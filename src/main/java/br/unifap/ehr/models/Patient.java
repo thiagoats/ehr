@@ -15,6 +15,7 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityListeners;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -83,12 +84,12 @@ public class Patient implements Serializable {
 	private String updatedBy;
 	
 	@Valid
-	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	@PrimaryKeyJoinColumn
 	private Contact contact;
 	
 	@Valid
-	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL)
+	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY, optional = false)
 	@PrimaryKeyJoinColumn
 	private Demographic demographic;
 	
